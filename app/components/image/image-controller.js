@@ -1,16 +1,16 @@
 function ImageController() {
-	var imageService= new ImageService()
+	var imageService = new ImageService()
 
-	var bodyElem = document.getElementById('body')
-	
-	
-	this.getImage = function getImage(){
-		imageService.getImage()
+	console.log("tester")
+
+	function getImage() {
+		imageService.getImage(drawImage)
 	}
-	
-	this.getWeather = function getWeather(){
-		imageService.Weather()
+
+	function drawImage(imgUrl) {
+		document.body.style.background = "url('${imgUrl}')"
 	}
-	
-	bodyElem.innerHTML=getImage(), getWeather()
+
+	getImage()
+
 }
