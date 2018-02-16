@@ -8,7 +8,7 @@ function ImageController() {
 	}
 
 	function drawImage(imgUrl) {
-		document.body.style.background = "url('${imgUrl}')"
+		document.body.style.background = `url('${imgUrl.large_url}')`
 	}
 
 	getImage()
