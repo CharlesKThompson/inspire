@@ -1,6 +1,16 @@
 function ImageController() {
-	//Your ImageService is a global constructor function what can you do here if you new it up?
+	var imageService= new ImageService()
 
+	var bodyElem = document.getElementById('body')
+	
+	
+	this.getImage = function getImage(){
+		imageService.getImage()
+	}
+	
+	this.getWeather = function getWeather(){
+		imageService.Weather()
+	}
+	
+	bodyElem.innerHTML=getImage(), getWeather()
 }
-
-

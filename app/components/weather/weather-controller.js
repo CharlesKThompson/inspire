@@ -1,10 +1,24 @@
-function WeatherController(){
+function WeatherController() {
 	var wc = this;
 	var weatherService = new WeatherService();
-	
-	weatherService.getWeather(function(weather){
-		console.log(weather);
-		//What can you do with this weather object?
+
+	var weatherElem = document.getElementById('weather')
+
+
+
+	weatherService.getWeather(function (weather, ) {
+		var temp = weather.main.temp
+		var farenheidt = Math.trunc(((temp-273.15)*1.8)+32)
+		
+		template = ``
+		template +=
+			`<div class="weather">
+		<h2>Todays Weather</h2>
+		</h4><b>Current Temperature: </b>${farenheidt + " degrees"}</h4>
+		<h5><b>Wind Speed </b>${ weather.wind.speed + "mph"}</h5>
+	</div>`
+		weatherElem.innerHTML = template
+
 	})
 
 }
