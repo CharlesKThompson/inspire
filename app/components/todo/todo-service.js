@@ -21,7 +21,7 @@ function TodoService() {
 		// WHAT IS THIS FOR???
 		$.post(baseUrl, todo)
 			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				
+				draw()
 			}) 
 			.fail(logError)
 	}
