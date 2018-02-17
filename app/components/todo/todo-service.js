@@ -12,7 +12,7 @@ function TodoService() {
 	this.getTodos = function (draw) {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
-				
+				return todoList
 			})
 			.fail(logError)
 	}
@@ -20,8 +20,10 @@ function TodoService() {
 	this.addTodo = function (todo) {
 		// WHAT IS THIS FOR???
 		$.post(baseUrl, todo)
-			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				draw()
+			.then(function(res){ 
+				todoList.push(todo)
+				// <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
+				
 			}) 
 			.fail(logError)
 	}

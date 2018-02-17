@@ -2,6 +2,7 @@ function TodoController() {
 	var todoService = new TodoService(draw)
 
 	var todoElem = document.getElementById('todo')
+	var todoListElem = document.getElementById('todoList')
 	// You will need four methods
 	// getTodos should request your api/todos and give an array of todos to your callback fn
 	// addTodo takes in a todo and posts it to the server
@@ -12,7 +13,7 @@ function TodoController() {
 	// Use this getTodos function as your callback for all other edits
 	function getTodos() {
 		//FYI DONT EDIT ME :)
-		todoService.getTodos()
+		todoService.getTodos(draw)
 	}
 
 	function draw(todos) {
@@ -24,8 +25,8 @@ function TodoController() {
 			var todo = todos[i];
 			template += `
 			<div class="todo">
-			<button class="input checkbox">Make the plan</button>
-			<form id="create-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.addTodoFromForm(event)">
+			<button class="input">Make a plan</button>
+			<form id="create-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.addTodo()">
 			<div class="form-group hidden">
 			<label for="add">Add to List:</label>
 			<input type="text" name="add" class="form-control">
@@ -41,14 +42,16 @@ function TodoController() {
 		for (let i = 0; i < todos.length; i++) {
 			var todo = todos[i];
 			template += `
-			<button class="input">Make the plan</button>
+			<button class="input">Finished with objective</button>
 			<form id="list" class="hidden" onsubmit="app.controllers.todoCtrl.removeTodo(event)">
 			<div class="form-group hidden">
-			<label for="add">Add to List:</label>
+			<label for="add">Still to achieve:</label>
 			<input type="text" name="add" class="form-control">
+			
 				</div>`
 
 		}
+		todoListElem.innerHTML = template
 	}
 
 	this.addTodo = function addTodo(){
@@ -81,6 +84,7 @@ function TodoController() {
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 	draw()
+	drawList()
 	getTodos()
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 
