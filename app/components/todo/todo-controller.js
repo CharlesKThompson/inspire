@@ -1,26 +1,59 @@
 function TodoController() {
-	// new up the TodoService that has already been configured for your use
+	var todoService = new TodoService(draw)
+
+	var todoElem = document.getElementById('todo')
 	// You will need four methods
 	// getTodos should request your api/todos and give an array of todos to your callback fn
 	// addTodo takes in a todo and posts it to the server
 	// toggleTodoStatus takes in a todo marks its status as completed and puts it to the server
 	// removeTodo takes in a todoId and sends a delete request to the server
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
-	var todoService = new TodoService()
 
 	// Use this getTodos function as your callback for all other edits
-	function getTodos(){
+	function getTodos() {
 		//FYI DONT EDIT ME :)
-		todoService.getTodos(draw)
+		todoService.getTodos()
 	}
 
 	function draw(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
+		var todos = todoService.getTodos
 		var template = ''
-		//DONT FORGET TO LOOP
+		for (let i = 0; i < todos.length; i++) {
+			var todo = todos[i];
+			template += `
+			<div class="todo">
+			<button class="input checkbox">Make the plan</button>
+			<form id="create-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.addTodoFromForm(event)">
+			<div class="form-group hidden">
+			<label for="add">Add to List:</label>
+			<input type="text" name="add" class="form-control">
+				</div>
+				</div>`
+		}
+		todoElem.innerHTML = template
 	}
 
+	function drawList(todos) {
+		var todos = todoService.getTodos
+		var template = ``
+		for (let i = 0; i < todos.length; i++) {
+			var todo = todos[i];
+			template += `
+			<button class="input">Make the plan</button>
+			<form id="list" class="hidden" onsubmit="app.controllers.todoCtrl.removeTodo(event)">
+			<div class="form-group hidden">
+			<label for="add">Add to List:</label>
+			<input type="text" name="add" class="form-control">
+				</div>`
+
+		}
+	}
+
+	this.addTodo = function addTodo(){
+		todoService.addTodo()
+	}
 	this.addTodoFromForm = function (e) {
 		e.preventDefault() // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
@@ -33,7 +66,7 @@ function TodoController() {
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
 		todoService.addTodo(todo, getTodos)
-		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
+		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
 	this.toggleTodoStatus = function (todoId) {
@@ -47,7 +80,8 @@ function TodoController() {
 
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
-
+	draw()
+	getTodos()
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 
 }
