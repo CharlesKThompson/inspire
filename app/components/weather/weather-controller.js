@@ -14,7 +14,7 @@ function WeatherController() {
 		template +=
 			`<div class="weather">
 		<h2>Todays Weather</h2>
-		</h4><i class="fa fa-thermometer-quarter" aria-hidden="true"></i><b>Current Temperature: </b>${farenheidt + " degrees"}</h4>
+		</h4><i class="fa fa-thermometer-quarter" aria-hidden="true"></i><b> Current Temperature: </b>${farenheidt + " degrees"}</h4>
 		<h5><b>Wind Speed </b>${ weather.wind.speed + "mph"}</h5>
 	</div>`
 		weatherElem.innerHTML = template

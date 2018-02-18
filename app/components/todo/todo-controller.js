@@ -11,12 +11,12 @@ function TodoController() {
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 
 	// Use this getTodos function as your callback for all other edits
-	function getTodos() {
+	function getTodos(todo) {
 		//FYI DONT EDIT ME :)
-		todoService.getTodos(draw)
+		todoService.getTodos(todo)
 	}
 
-	function draw(arr) {
+	function draw(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		var todos = todoService.getTodos
@@ -41,6 +41,7 @@ function TodoController() {
 		var template = ``
 		for (let i = 0; i < todos.length; i++) {
 			var todo = todos[i];
+			debugger
 			template += `
 			<button class="input">Finished with objective</button>
 			<form id="list-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.removeTodo(event)">
