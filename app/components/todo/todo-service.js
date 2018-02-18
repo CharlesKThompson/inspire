@@ -17,13 +17,13 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	this.addTodo = function (todo) {
+	this.addTodo = function (todo, cb) {
 		// WHAT IS THIS FOR???
 		$.post(baseUrl, todo)
 			.then(function(res){ 
 				todoList.push(todo)
 				// <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				
+				cb(todoList)
 			}) 
 			.fail(logError)
 	}

@@ -16,7 +16,7 @@ function TodoController() {
 		todoService.getTodos(draw)
 	}
 
-	function draw(todos) {
+	function draw(arr) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		var todos = todoService.getTodos
@@ -26,7 +26,7 @@ function TodoController() {
 			template += `
 			<div class="todo">
 			<button class="input">Make a plan</button>
-			<form id="create-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.addTodo()">
+			<form id="create-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.addTodoFromForm()">
 			<div class="form-group hidden">
 			<label for="add">Add to List:</label>
 			<input type="text" name="add" class="form-control">
@@ -43,7 +43,7 @@ function TodoController() {
 			var todo = todos[i];
 			template += `
 			<button class="input">Finished with objective</button>
-			<form id="list" class="hidden" onsubmit="app.controllers.todoCtrl.removeTodo(event)">
+			<form id="list-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.removeTodo(event)">
 			<div class="form-group hidden">
 			<label for="add">Still to achieve:</label>
 			<input type="text" name="add" class="form-control">
@@ -52,18 +52,23 @@ function TodoController() {
 
 		}
 		todoListElem.innerHTML = template
+	
 	}
 
-	this.addTodo = function addTodo(){
+	this.addTodo = function addTodo(todo, getTodos) {
 		todoService.addTodo()
 	}
 	this.addTodoFromForm = function (e) {
 		e.preventDefault() // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target
-		var todo = {
-			// DONT FORGET TO BUILD YOUR TODO OBJECT
+		var todo = ""
+		for (let i = 0; i < form.length; i++) {
+			var todo = forms[i];
+			return todo
+
 		}
+		// DONT FORGET TO BUILD YOUR TODO OBJECT
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
