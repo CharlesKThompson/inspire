@@ -11,9 +11,9 @@ function TodoController() {
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 
 	// Use this getTodos function as your callback for all other edits
-	function getTodos(todo) {
+	function getTodos() {
 		//FYI DONT EDIT ME :)
-		todoService.getTodos(todo)
+		todoService.getTodos(draw)
 	}
 
 	function draw(todos) {
