@@ -68,9 +68,10 @@ function TodoController() {
 		// YEP THATS IT FOR ME
 	}
 
-	this.removeTodo = function (todoId) {
+	this.removeTodo = function (id) {
 		// ask the service to run the remove todo with this id
-
+		todoService.removeTodo(id)
+		draw(todoService.getTodos())
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 	getTodos()

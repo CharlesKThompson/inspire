@@ -29,6 +29,15 @@ function TodoService() {
 			.fail(logError)
 	}
 
+	this.getTodoById = function findTodoById(arr, id) {
+		for (let i = 0; i < arr.length; i++) {
+			var todoId = arr[i];
+			if (id == todo.id) {
+				return todoId
+			}
+		}
+	}
+
 	this.toggleTodoStatus = function (todoId) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
 		//STEP 1: Find the todo by its index **HINT** todoList
@@ -48,9 +57,15 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	this.removeTodo = function () {
+	this.removeTodo = function (todo, cb) {console.log("getting here?")
 		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
-		
+		$.ajax({
+			method: 'DELETE',
+			url: baseUrl + '/' + todoId,
+		})
+			//todoList.pop(todo)
+			cb()
+
 	}
 
 }

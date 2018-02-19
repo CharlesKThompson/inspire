@@ -1,11 +1,26 @@
 .weather {
 text-align: right;
 height: 15rem;
-color: darkblue;
+background: rgba(0, 0, 0, .5);
+color: white;
 }
 
 .quote {
     text-align: center;
     height: 15rem;
-    color: darkblue;
+    background: rgba(0, 0, 0, .5);
+    color: white;
 }
+
+.todo {
+    background: rgba(0, 0, 0, .5);
+    color: white;
+    width: 12rem;
+}
+
+#todoList {
+    background: rgba(0, 0, 0, .5);
+    color: white;
+    width: 12rem;
+}
+
