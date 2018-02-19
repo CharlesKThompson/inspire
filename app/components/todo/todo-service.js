@@ -12,8 +12,8 @@ function TodoService() {
 	this.getTodos = function (draw) {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
-				return todoList
 				draw(res)
+				
 			})
 			.fail(logError)
 	}

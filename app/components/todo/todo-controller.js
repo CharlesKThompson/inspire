@@ -19,7 +19,6 @@ function TodoController() {
 	function draw(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
-		var todos = todoService.getTodos
 		var template = ''
 		for (let i = 0; i < todos.length; i++) {
 			var todo = todos[i];
