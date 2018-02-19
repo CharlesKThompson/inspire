@@ -13,7 +13,6 @@ function TodoService() {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
 				draw(res)
-				
 			})
 			.fail(logError)
 	}
@@ -22,9 +21,10 @@ function TodoService() {
 		// WHAT IS THIS FOR???
 		$.post(baseUrl, todo)
 			.then(function(res){ 
+				console.log(res.data)
 				todoList.push(todo)
-				// <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				cb(todoList)
+				// // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
+				 cb()
 			}) 
 			.fail(logError)
 	}

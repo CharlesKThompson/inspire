@@ -19,55 +19,40 @@ function TodoController() {
 	function draw(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
-		var template = ''
+		console.log(todos)
+		var template = ``		
 		for (let i = 0; i < todos.length; i++) {
 			var todo = todos[i];
 			template += `
-			<div class="todo">
-			<button class="input">Make a plan</button>
-			<form id="create-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.addTodoFromForm()">
-			<div class="form-group hidden">
-			<label for="add">Add to List:</label>
-			<input type="text" name="add" class="form-control">
-				</div>
-				</div>`
-		}
-		todoElem.innerHTML = template
-	}
-
-	function drawList(todos) {
-		var todos = todoService.getTodos
-		var template = ``
-		for (let i = 0; i < todos.length; i++) {
-			var todo = todos[i];
-			debugger
-			template += `
-			<button class="input">Finished with objective</button>
 			<form id="list-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.removeTodo(event)">
-			<div class="form-group hidden">
-			<label for="add">Still to achieve:</label>
-			<input type="text" name="add" class="form-control">
-			
-				</div>`
-
+				<div class="form-group hidden">
+					<label for="add">Still to achieve:</label>
+					<p>${todo.description}</p>
+				</div>
+				<button class="input">Finished with objective</button>
+			</form>`
 		}
 		todoListElem.innerHTML = template
-	
 	}
 
-	this.addTodo = function addTodo(todo, getTodos) {
-		todoService.addTodo()
-	}
+	// this.addTodo = function addTodo(todo, getTodos) {
+	// 	todoService.addTodo()
+	// }
+
 	this.addTodoFromForm = function (e) {
 		e.preventDefault() // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target
-		var todo = ""
-		for (let i = 0; i < form.length; i++) {
-			var todo = forms[i];
-			return todo
+		var todo = {
+			description: form.todoObjective.value
+		} 
+			
+		// console.log(form.todoObjective.value)
+		// for (let i = 0; i < form.length; i++) {
+		//	var todo = form[i];
+		//return todo
 
-		}
+		//}
 		// DONT FORGET TO BUILD YOUR TODO OBJECT
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
@@ -88,9 +73,10 @@ function TodoController() {
 
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
-	draw()
-	drawList()
 	getTodos()
+	
+
+	//draw()
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 
 }

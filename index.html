@@ -19,9 +19,25 @@
 	</div>
 
 	<div id="todo">
+		<div class="todo">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+
+						<form id="create-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.addTodoFromForm(event)">
+							<div class="form-group hidden">
+								<label for="add">Add to List:</label>
+								<input type="text" name="todoObjective" class="form-control">
+							</div>
+							<button class="input">Make a plan</button>
+					</div>
+				</div>
+			</div>
+			</form>
+		</div>
 
 
-		A Todo List
+		My Todo List
 	</div>
 	<div id="todoList">
 
