@@ -20,11 +20,13 @@ function TodoController() {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		console.log(todos)
-		var template = ``		
+		var template = ``
 		for (let i = 0; i < todos.length; i++) {
 			var todo = todos[i];
-			template += `
-			<form id="list-${todo}" class="hidden" onsubmit="app.controllers.todoCtrl.removeTodo(event)">
+			console.log(todo.id)
+			template +=
+				`
+			<form class="${todo.id}" onsubmit="app.controllers.todoCtrl.removeTodo(event)">
 				<div class="form-group hidden">
 					<label for="add">Still to achieve:</label>
 					<p>${todo.description}</p>
@@ -45,14 +47,7 @@ function TodoController() {
 		var form = e.target
 		var todo = {
 			description: form.todoObjective.value
-		} 
-			
-		// console.log(form.todoObjective.value)
-		// for (let i = 0; i < form.length; i++) {
-		//	var todo = form[i];
-		//return todo
-
-		//}
+		}
 		// DONT FORGET TO BUILD YOUR TODO OBJECT
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
@@ -68,16 +63,28 @@ function TodoController() {
 		// YEP THATS IT FOR ME
 	}
 
-	this.removeTodo = function (id) {
-		// ask the service to run the remove todo with this id
-		todoService.removeTodo(id)
-		draw(todoService.getTodos())
-		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
-	}
-	getTodos()
-	
+	// this.removeTodo = function (id, draw) {
+	// 	// ask the service to run the remove todo with this id
+	// 	todoService.removeTodo(id)
+	// 	draw(todoService.getTodos(draw))
+	// 	// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
+	// }
+
 
 	//draw()
-	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
+	this.removeTodo = function (id, cb) {
+		// ask the service to run the remove todo with this id
+		event.preventDefault()
+		//var form = event.target
+		//var form = document.querySelector(".delete-form")
+		//var id = form.getAttribute("data-id")
+		debugger
+		console.log("hi")
+		todoService.removeTodo(id, cb)
+		//draw(todoService.getTodos(draw))
+		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
+	}
+	getTodos()// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
+
 
 }
