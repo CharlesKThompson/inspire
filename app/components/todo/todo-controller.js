@@ -23,10 +23,10 @@ function TodoController() {
 		var template = ``
 		for (let i = 0; i < todos.length; i++) {
 			var todo = todos[i];
-			console.log(todo.id)
 			template +=
 				`
 			<form class="${todo.id}" onsubmit="app.controllers.todoCtrl.removeTodo(event)">
+				<input type="hidden" value="${todo.id}" name="id">
 				<div class="form-group hidden">
 					<label for="add">Still to achieve:</label>
 					<p>${todo.description}</p>
@@ -71,14 +71,15 @@ function TodoController() {
 
 
 	//draw()
-	this.removeTodo = function (id, cb) {
+	this.removeTodo = function (event) {
 		// ask the service to run the remove todo with this id
 		event.preventDefault()
+		var id = event.target.id.value
+		console.log(id)
 		//var form = event.target
-		//var id = form.getAttribute("data-id")
-		console.log("hi")
-		todoService.removeTodo(id, cb)
-		//draw(todoService.getTodos())
+		//var id = todo.id
+		todoService.removeTodo(id, draw)
+		//todoService.removeTodo(id, getTodos)
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 	getTodos()// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???

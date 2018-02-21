@@ -24,3 +24,6 @@ color: white;
     width: 12rem;
 }
 
+body {
+    background-repeat: no-repeat;
+}
