@@ -66,7 +66,6 @@ function TodoController() {
 	// this.removeTodo = function (id, draw) {
 	// 	// ask the service to run the remove todo with this id
 	// 	todoService.removeTodo(id)
-	// 	draw(todoService.getTodos(draw))
 	// 	// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	// }
 
@@ -76,12 +75,11 @@ function TodoController() {
 		// ask the service to run the remove todo with this id
 		event.preventDefault()
 		//var form = event.target
-		//var form = document.querySelector(".delete-form")
 		//var id = form.getAttribute("data-id")
 		debugger
 		console.log("hi")
 		todoService.removeTodo(id, cb)
-		//draw(todoService.getTodos(draw))
+		//draw(todoService.getTodos())
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 	getTodos()// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
