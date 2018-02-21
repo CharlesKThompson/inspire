@@ -76,7 +76,6 @@ function TodoController() {
 		event.preventDefault()
 		//var form = event.target
 		//var id = form.getAttribute("data-id")
-		debugger
 		console.log("hi")
 		todoService.removeTodo(id, cb)
 		//draw(todoService.getTodos())

@@ -1,7 +1,7 @@
 function TodoService() {
 	// A local copy of your todos
 	var todoList = []
-	var baseUrl = 'https://inspire-server.herokuapp.com/api/Charles'
+	var baseUrl = 'https://inspire-server.herokuapp.com/api/Charles/'
 	var todoId = [];
 
 	function logError(err) {
@@ -63,7 +63,7 @@ function TodoService() {
 		$.ajax({
 			method: 'DELETE',
 			contentType: 'application/json',
-			url: baseUrl + '/' + todo
+			url: baseUrl + '/' + id
 		})
 		
 		.then(function (res) {
